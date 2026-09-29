@@ -1,0 +1,11 @@
+@use '../../shared/styles/variables' as *;
+
+.dashboardpage {
+  margin-left: $sidebar-width;
+  padding: 2rem;
+}
+
+.dashboardmain {
+  margin-top: 2rem;
+  
+}

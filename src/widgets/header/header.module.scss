@@ -1,0 +1,12 @@
+@use '../../shared/styles/variables' as *;
+
+.header {
+  height: $header-height;
+  padding: 0 2rem;
+  background: white;
+  border-bottom: 1px solid $border-color;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+}
