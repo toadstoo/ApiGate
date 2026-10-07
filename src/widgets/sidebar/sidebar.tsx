@@ -1,14 +1,20 @@
+import React from 'react';
 import { LayoutDashboard, Server, FileText, Settings, ShieldCheck } from 'lucide-react';
 import styles from './sidebar.module.scss';
 
 const NAV_ITEMS = [
-  { icon: <LayoutDashboard size={20} />, label: 'Overview', active: true },
-  { icon: <Server size={20} />, label: 'Services', active: false },
-  { icon: <FileText size={20} />, label: 'Logs', active: false },
-  { icon: <Settings size={20} />, label: 'Settings', active: false },
+  { icon: <LayoutDashboard size={20} />, label: 'Overview' },
+  { icon: <Server size={20} />, label: 'Services' },
+  { icon: <FileText size={20} />, label: 'Logs' },
+  { icon: <Settings size={20} />, label: 'Settings' },
 ];
 
-export const Sidebar = () => {
+interface SidebarProps {
+  activeTab: string;
+  onSelectTab: (tab: string) => void;
+}
+
+export const Sidebar: React.FC<SidebarProps> = ({ activeTab, onSelectTab }) => {
   return (
     <aside className={styles.sidebar}>
       <div className={styles.header}>
@@ -22,7 +28,11 @@ export const Sidebar = () => {
           <a
             key={item.label}
             href="#"
-            className={`${styles.navItem} ${item.active ? styles.active : ''}`}
+            className={`${styles.navItem} ${item.label === activeTab ? styles.active : ''}`}
+            onClick={(e) => {
+              e.preventDefault();
+              onSelectTab(item.label);
+            }}
           >
             {item.icon}
             <span>{item.label}</span>
@@ -38,4 +48,5 @@ export const Sidebar = () => {
     </aside>
   );
 };
+
 
